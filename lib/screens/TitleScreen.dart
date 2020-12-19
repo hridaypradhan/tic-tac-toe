@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class TitleScreen extends StatelessWidget {
   static String id = "title_screen";
 
@@ -8,11 +10,12 @@ class TitleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // bottomNavigationBar: LinearProgressIndicator(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: CircleAvatar(
+              backgroundColor: themeColor,
               radius: 130.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -20,6 +23,7 @@ class TitleScreen extends StatelessWidget {
                   Text(
                     'Tic Tac Toe',
                     style: TextStyle(
+                      color: secondaryColor,
                       fontSize: 30.0,
                       letterSpacing: 2.0,
                     ),
@@ -32,21 +36,27 @@ class TitleScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.close,
+                        color: secondaryColor,
                       ),
                       SizedBox(
                         width: 10.0,
                       ),
                       Icon(
                         Icons.circle,
+                        color: secondaryColor,
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            CircularProgressIndicator(),
-          ],
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 70.0),
+            alignment: Alignment.bottomCenter,
+            child: CircularProgressIndicator(),
+          ),
+        ],
       ),
     );
   }
