@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TitleScreen extends StatelessWidget {
@@ -6,11 +7,12 @@ class TitleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: CircleAvatar(
+      // bottomNavigationBar: LinearProgressIndicator(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
               radius: 130.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -42,8 +44,9 @@ class TitleScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+            CircularProgressIndicator(),
+          ],
+        ),
       ),
     );
   }
