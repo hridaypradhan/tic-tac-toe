@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
 
-final Color themeColor = Colors.blue[700];
-final Color secondaryColor = Colors.white;
+final Color kThemeColor = Colors.blue[700];
+final Color kSecondaryColor = Colors.white;

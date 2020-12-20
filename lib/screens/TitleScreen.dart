@@ -1,28 +1,20 @@
 import 'dart:async';
-
 import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class TitleScreen extends StatefulWidget {
-  static String id = "title_screen";
-
-  @override
-  _TitleScreenState createState() => _TitleScreenState();
-}
-
-class _TitleScreenState extends State<TitleScreen> {
+  static final String id = "title_screen";
   final titleContent = Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
         'Tic Tac Toe',
         style: TextStyle(
-          color: secondaryColor,
+          color: kSecondaryColor,
           fontSize: 30.0,
-          letterSpacing: 2.0,
+          letterSpacing: 10.0,
         ),
       ),
       SizedBox(
@@ -33,34 +25,40 @@ class _TitleScreenState extends State<TitleScreen> {
         children: [
           Icon(
             Icons.close,
-            color: secondaryColor,
+            color: kSecondaryColor,
           ),
           SizedBox(
             width: 10.0,
           ),
           Icon(
             Icons.circle,
-            color: secondaryColor,
+            color: kSecondaryColor,
           ),
         ],
       ),
     ],
   );
 
-  bool indicatorIsVisible = true, scaleAnimationIsEnabled = false;
+  @override
+  _TitleScreenState createState() => _TitleScreenState();
+}
+
+class _TitleScreenState extends State<TitleScreen> {
+  bool indicatorIsVisible = true;
+  bool scaleAnimationIsEnabled = false;
+  bool opacityAnimationIsEnabled = false;
 
   @override
   void initState() {
     super.initState();
     Timer(
-      Duration(
-        seconds: 3,
-      ),
+      Duration(seconds: 3),
       () {
         setState(
           () {
             indicatorIsVisible = false;
             scaleAnimationIsEnabled = true;
+            opacityAnimationIsEnabled = true;
           },
         );
       },
@@ -76,14 +74,40 @@ class _TitleScreenState extends State<TitleScreen> {
           ScaleAnimatedWidget.tween(
             enabled: scaleAnimationIsEnabled,
             duration: Duration(seconds: 1),
-            scaleEnabled: 4,
+            scaleEnabled: 5,
             scaleDisabled: 1,
             child: CircleAvatar(
-              backgroundColor: themeColor,
-              radius: 130.0,
+              backgroundColor: kThemeColor,
+              radius: 160.0,
             ),
           ),
-          titleContent,
+          widget.titleContent,
+          Positioned(
+            bottom: 80.0,
+            child: OpacityAnimatedWidget.tween(
+              enabled: opacityAnimationIsEnabled,
+              opacityDisabled: 0,
+              opacityEnabled: 1,
+              duration: Duration(seconds: 2),
+              child: OutlineButton(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                ),
+                child: Text(
+                  'PLAY',
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 20,
+                    fontSize: 30.0,
+                    color: kSecondaryColor,
+                  ),
+                ),
+                onPressed: () {
+                  print('Hello');
+                },
+              ),
+            ),
+          ),
           Container(
             padding: EdgeInsets.only(
               bottom: 70.0,
