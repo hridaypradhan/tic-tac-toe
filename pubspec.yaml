@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   animated_widgets: ^1.0.6
   device_preview: ^0.5.5
+  connectivity: ^2.0.2
 
 dev_dependencies:
   flutter_test:

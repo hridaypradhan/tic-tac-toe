@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:animated_widgets/animated_widgets.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
@@ -45,22 +46,44 @@ class TitleScreen extends StatefulWidget {
 
 class _TitleScreenState extends State<TitleScreen> {
   bool indicatorIsVisible = true;
+  bool internetTextIsVisible = true;
   bool scaleAnimationIsEnabled = false;
   bool opacityAnimationIsEnabled = false;
+
+  Connectivity connectivity;
+  StreamSubscription<ConnectivityResult> subscription;
+
+  @override
+  void dispose() {
+    super.dispose();
+    subscription.cancel();
+  }
+
+  void proceedAfterConnection() {
+    setState(() {
+      indicatorIsVisible = false;
+      scaleAnimationIsEnabled = true;
+      opacityAnimationIsEnabled = true;
+      internetTextIsVisible = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    connectivity = Connectivity();
+    subscription = connectivity.onConnectivityChanged.listen(
+      (event) {
+        if (event != ConnectivityResult.none) {
+          proceedAfterConnection();
+        }
+      },
+    );
     Timer(
       Duration(seconds: 3),
-      () {
-        setState(
-          () {
-            indicatorIsVisible = false;
-            scaleAnimationIsEnabled = true;
-            opacityAnimationIsEnabled = true;
-          },
-        );
+      () async {
+        if (await connectivity.checkConnectivity() != ConnectivityResult.none)
+          proceedAfterConnection();
       },
     );
   }
@@ -105,6 +128,22 @@ class _TitleScreenState extends State<TitleScreen> {
                 onPressed: () {
                   print('Hello');
                 },
+              ),
+            ),
+          ),
+          Visibility(
+            visible: internetTextIsVisible,
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              padding: EdgeInsets.only(
+                bottom: 130.0,
+              ),
+              child: Text(
+                'Make sure you\'re connected to the internet',
+                style: TextStyle(
+                  color: kThemeColor,
+                  letterSpacing: 2.0,
+                ),
               ),
             ),
           ),
