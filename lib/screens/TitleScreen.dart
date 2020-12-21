@@ -147,13 +147,13 @@ class _TitleScreenState extends State<TitleScreen> {
               ),
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(
-              bottom: 70.0,
-            ),
-            alignment: Alignment.bottomCenter,
-            child: Visibility(
-              visible: indicatorIsVisible,
+          Visibility(
+            visible: indicatorIsVisible,
+            child: Container(
+              padding: EdgeInsets.only(
+                bottom: 70.0,
+              ),
+              alignment: Alignment.bottomCenter,
               child: CircularProgressIndicator(),
             ),
           ),
