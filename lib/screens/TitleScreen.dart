@@ -3,6 +3,7 @@ import 'package:animated_widgets/animated_widgets.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/CodeScreen.dart';
 import '../constants.dart';
 
 class TitleScreen extends StatefulWidget {
@@ -59,15 +60,6 @@ class _TitleScreenState extends State<TitleScreen> {
     subscription.cancel();
   }
 
-  void proceedAfterConnection() {
-    setState(() {
-      indicatorIsVisible = false;
-      scaleAnimationIsEnabled = true;
-      opacityAnimationIsEnabled = true;
-      internetTextIsVisible = false;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -75,15 +67,18 @@ class _TitleScreenState extends State<TitleScreen> {
     subscription = connectivity.onConnectivityChanged.listen(
       (event) {
         if (event != ConnectivityResult.none) {
-          proceedAfterConnection();
+          Timer(
+            Duration(seconds: 3),
+            () {
+              setState(() {
+                indicatorIsVisible = false;
+                scaleAnimationIsEnabled = true;
+                opacityAnimationIsEnabled = true;
+                internetTextIsVisible = false;
+              });
+            },
+          );
         }
-      },
-    );
-    Timer(
-      Duration(seconds: 3),
-      () async {
-        if (await connectivity.checkConnectivity() != ConnectivityResult.none)
-          proceedAfterConnection();
       },
     );
   }
@@ -126,7 +121,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   ),
                 ),
                 onPressed: () {
-                  print('Hello');
+                  Navigator.pushNamed(context, CodeScreen.id);
                 },
               ),
             ),
