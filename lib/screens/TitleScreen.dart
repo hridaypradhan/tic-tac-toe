@@ -55,12 +55,14 @@ class _TitleScreenState extends State<TitleScreen> {
           Timer(
             Duration(seconds: 3),
             () {
-              setState(() {
-                indicatorIsVisible = false;
-                scaleAnimationIsEnabled = true;
-                opacityAnimationIsEnabled = true;
-                internetTextIsVisible = false;
-              });
+              setState(
+                () {
+                  indicatorIsVisible = false;
+                  scaleAnimationIsEnabled = true;
+                  opacityAnimationIsEnabled = true;
+                  internetTextIsVisible = false;
+                },
+              );
             },
           );
         }

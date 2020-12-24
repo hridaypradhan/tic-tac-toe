@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/NewGameScreen.dart';
 import 'package:flutter_app/screens/TitleScreen.dart';
 import 'package:flutter_app/screens/CodeScreen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -24,6 +25,10 @@ class MyApp extends StatelessWidget {
           case CodeScreen.id:
             return PageTransition(
                 child: CodeScreen(), type: PageTransitionType.fade);
+            break;
+          case NewGameScreen.id:
+            return PageTransition(
+                child: NewGameScreen(), type: PageTransitionType.fade);
             break;
           default:
             return null;
