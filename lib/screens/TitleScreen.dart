@@ -22,22 +22,7 @@ class TitleScreen extends StatefulWidget {
       SizedBox(
         height: 15.0,
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.close,
-            color: kSecondaryColor,
-          ),
-          SizedBox(
-            width: 10.0,
-          ),
-          Icon(
-            Icons.circle,
-            color: kSecondaryColor,
-          ),
-        ],
-      ),
+      kGameSymbol,
     ],
   );
 
