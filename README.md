@@ -1,4 +1,4 @@
-# flutter_app
+# tic-tac-toe
 
 Mullti-device tic-tac-toe 
 
