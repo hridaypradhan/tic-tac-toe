@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/GameScreen.dart';
 import 'package:flutter_app/screens/NewGameScreen.dart';
 import 'package:flutter_app/screens/TitleScreen.dart';
-import 'package:flutter_app/screens/CodeScreen.dart';
+
+import 'package:flutter_app/screens/ChoiceScreen.dart';
 import 'package:page_transition/page_transition.dart';
 
 void main() {
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case CodeScreen.id:
+          case ChoiceScreen.id:
             return PageTransition(
-                child: CodeScreen(), type: PageTransitionType.fade);
+                child: ChoiceScreen(), type: PageTransitionType.fade);
             break;
           case NewGameScreen.id:
             return PageTransition(
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       initialRoute: TitleScreen.id,
       routes: {
-        TitleScreen.id: (context) => GameScreen(),
+        TitleScreen.id: (context) => ChoiceScreen(),
       },
     );
   }

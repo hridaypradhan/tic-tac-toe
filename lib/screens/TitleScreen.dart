@@ -3,7 +3,7 @@ import 'package:animated_widgets/animated_widgets.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/CodeScreen.dart';
+import 'package:flutter_app/screens/ChoiceScreen.dart';
 import '../constants.dart';
 
 class TitleScreen extends StatefulWidget {
@@ -108,7 +108,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, CodeScreen.id);
+                  Navigator.pushNamed(context, ChoiceScreen.id);
                 },
               ),
             ),

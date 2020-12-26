@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants.dart';
-
 import 'GameScreen.dart';
 
 class NewGameScreen extends StatefulWidget {

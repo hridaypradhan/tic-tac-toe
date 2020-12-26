@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/GridSquare.dart';
+import 'file:///C:/Users/hrida/Documents/Flutter%20Learning/tic_tac_toe/flutter_app/lib/components/GridSquare.dart';
 import 'package:flutter_app/constants.dart';
 
 class GameScreen extends StatefulWidget {
