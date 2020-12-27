@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389400466800",
+    "project_id": "tic-tac-toe-flutter-30194",
+    "storage_bucket": "tic-tac-toe-flutter-30194.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389400466800:android:360299d96da63928702bb5",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389400466800-kp1o44e1kln7v8ojohffpa1c8mfipv5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQJGwKHEwPepFZCrwvUmQOLUdCnjMeD0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389400466800-kp1o44e1kln7v8ojohffpa1c8mfipv5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
