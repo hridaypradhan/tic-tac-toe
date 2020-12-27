@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/ButtonTemplate.dart';
 import 'package:flutter_app/constants.dart';
+import 'package:flutter_app/screens/GameScreen.dart';
 import 'package:flutter_app/screens/NewGameScreen.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -50,15 +51,56 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      child: Stack(
+                        alignment: AlignmentDirectional.center,
                         children: [
-                          Icon(Icons.drag_handle),
-                          Flexible(
+                          Positioned(
+                            child: Text(
+                              'ENTER GAME CODE',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                color: kThemeColor,
+                                letterSpacing: 4.0,
+                              ),
+                            ),
+                            top: 40.0,
+                          ),
+                          Positioned(
+                            child: OutlineButton(
+                              borderSide: BorderSide(
+                                color: kThemeColor,
+                              ),
+                              child: Text(
+                                'PLAY',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  letterSpacing: 20,
+                                  fontSize: 30.0,
+                                  color: kThemeColor,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, GameScreen.id);
+                              },
+                            ),
+                            bottom: 20.0,
+                          ),
+                          Align(
+                            child: Icon(
+                              Icons.drag_handle,
+                            ),
+                            alignment: AlignmentDirectional.topCenter,
+                          ),
+                          Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 NumberPicker.integer(
+                                  listViewWidth: NumberPicker
+                                          .kDefaultListViewCrossAxisSize /
+                                      2,
                                   infiniteLoop: true,
                                   initialValue: _digit1,
                                   minValue: 0,
@@ -70,6 +112,9 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                                   },
                                 ),
                                 NumberPicker.integer(
+                                  listViewWidth: NumberPicker
+                                          .kDefaultListViewCrossAxisSize /
+                                      2,
                                   infiniteLoop: true,
                                   initialValue: _digit2,
                                   minValue: 0,
@@ -81,6 +126,9 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                                   },
                                 ),
                                 NumberPicker.integer(
+                                  listViewWidth: NumberPicker
+                                          .kDefaultListViewCrossAxisSize /
+                                      2,
                                   infiniteLoop: true,
                                   initialValue: _digit3,
                                   minValue: 0,
@@ -92,6 +140,9 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                                   },
                                 ),
                                 NumberPicker.integer(
+                                  listViewWidth: NumberPicker
+                                          .kDefaultListViewCrossAxisSize /
+                                      2,
                                   infiniteLoop: true,
                                   initialValue: _digit4,
                                   minValue: 0,
