@@ -33,6 +33,8 @@ dependencies:
   connectivity: ^2.0.2
   page_transition: ^1.1.7+3
   numberpicker: ^1.3.0
+  provider: ^4.3.2+3
+
 
 dev_dependencies:
   flutter_test:

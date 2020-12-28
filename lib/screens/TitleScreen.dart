@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:animated_widgets/animated_widgets.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/ChoiceScreen.dart';
 import '../constants.dart';

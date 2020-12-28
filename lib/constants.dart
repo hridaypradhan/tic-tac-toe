@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const CROSS_CODE = 1, CIRCLE_CODE = 2;
+
 final Color kThemeColor = Colors.blue[700];
 final Color kSecondaryColor = Colors.white;
 
