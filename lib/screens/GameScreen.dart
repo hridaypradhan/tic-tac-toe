@@ -38,10 +38,10 @@ class GameScreen extends StatelessWidget {
                 Positioned(
                   top: height / 8,
                   child: Text(
-                    gameData.isCrossTurn ? 'X\'s turn' : 'O\'s turn',
+                    gameData.isCrossTurn ? 'Your turn (X)' : 'Their turn (O)',
                     style: TextStyle(
                       color: kSecondaryColor,
-                      fontSize: 50.0,
+                      fontSize: 45.0,
                       letterSpacing: 4.0,
                     ),
                   ),

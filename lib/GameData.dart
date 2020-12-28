@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/FirebaseGameData.dart';
 
 import 'components/GridSquare.dart';
 import 'constants.dart';
@@ -8,13 +9,19 @@ import 'constants.dart';
 class GameData extends ChangeNotifier {
   GameData() {
     generateCode();
+    _firebaseGameData = FirebaseGameData();
   }
-
+  FirebaseGameData _firebaseGameData;
   bool _secondPlayerExists = true;
   bool _isCrossTurn = true;
   bool _gameSquaresEnabled = true;
   int _gameCode;
+  int _playerId;
   List<int> _currentSymbols = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  void setPlayerId(int id) {
+    _playerId = id;
+  }
 
   void generateCode() {
     Random random = Random();
@@ -63,8 +70,7 @@ class GameData extends ChangeNotifier {
     return output;
   }
 
-  void resetBoard() {
-    // _currentSymbols = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  void disableBoard() {
     _gameSquaresEnabled = false;
   }
 
@@ -73,42 +79,42 @@ class GameData extends ChangeNotifier {
         _currentSymbols[1] == _currentSymbols[2] &&
         _currentSymbols[0] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[3] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[5] &&
         _currentSymbols[3] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[6] == _currentSymbols[7] &&
         _currentSymbols[7] == _currentSymbols[8] &&
         _currentSymbols[6] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[0] == _currentSymbols[3] &&
         _currentSymbols[3] == _currentSymbols[6] &&
         _currentSymbols[0] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[1] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[7] &&
         _currentSymbols[1] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[2] == _currentSymbols[5] &&
         _currentSymbols[5] == _currentSymbols[8] &&
         _currentSymbols[2] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[6] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[2] &&
         _currentSymbols[6] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     } else if (_currentSymbols[0] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[8] &&
         _currentSymbols[0] != 0) {
       print('Game Over!');
-      resetBoard();
+      disableBoard();
     }
   }
 

@@ -60,6 +60,7 @@ class NewGameScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
+                          gameData.setPlayerId(1);
                           Navigator.pushNamed(context, GameScreen.id);
                         },
                       )
