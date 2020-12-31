@@ -4,6 +4,9 @@ import 'package:flutter_app/constants.dart';
 import 'package:flutter_app/screens/GameScreen.dart';
 import 'package:flutter_app/screens/NewGameScreen.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:provider/provider.dart';
+
+import '../GameData.dart';
 
 class ChoiceScreen extends StatefulWidget {
   static const String id = 'choice_screen';
@@ -82,6 +85,8 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                                 ),
                               ),
                               onPressed: () {
+                                Provider.of<GameData>(context, listen: false)
+                                    .setPlayerId(2);
                                 Navigator.pushNamed(context, GameScreen.id);
                               },
                             ),

@@ -10,7 +10,9 @@ class GameData extends ChangeNotifier {
   GameData() {
     generateCode();
     _firebaseGameData = FirebaseGameData();
+    _firebaseGameData.createRoom(_gameCode);
   }
+
   FirebaseGameData _firebaseGameData;
   bool _secondPlayerExists = true;
   bool _isCrossTurn = true;
@@ -38,6 +40,7 @@ class GameData extends ChangeNotifier {
       _currentSymbols[index] = CIRCLE_CODE;
       _isCrossTurn = true;
     }
+    _firebaseGameData.updateBoardState(_gameCode, _currentSymbols);
     checkIfGameOver();
     notifyListeners();
   }
@@ -75,46 +78,46 @@ class GameData extends ChangeNotifier {
   }
 
   void checkIfGameOver() {
+    bool isOver = false;
+
     if (_currentSymbols[0] == _currentSymbols[1] &&
         _currentSymbols[1] == _currentSymbols[2] &&
         _currentSymbols[0] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[3] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[5] &&
         _currentSymbols[3] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[6] == _currentSymbols[7] &&
         _currentSymbols[7] == _currentSymbols[8] &&
         _currentSymbols[6] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[0] == _currentSymbols[3] &&
         _currentSymbols[3] == _currentSymbols[6] &&
         _currentSymbols[0] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[1] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[7] &&
         _currentSymbols[1] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[2] == _currentSymbols[5] &&
         _currentSymbols[5] == _currentSymbols[8] &&
         _currentSymbols[2] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[6] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[2] &&
         _currentSymbols[6] != 0) {
-      print('Game Over!');
-      disableBoard();
+      isOver = true;
     } else if (_currentSymbols[0] == _currentSymbols[4] &&
         _currentSymbols[4] == _currentSymbols[8] &&
         _currentSymbols[0] != 0) {
+      isOver = true;
+    }
+    if (isOver) {
       print('Game Over!');
       disableBoard();
+      _firebaseGameData.endGame(_gameCode);
+      _firebaseGameData.destroyRoom(_gameCode);
     }
   }
 
