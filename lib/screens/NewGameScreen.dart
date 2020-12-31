@@ -10,6 +10,7 @@ class NewGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<GameData>(
       builder: (context, gameData, child) {
+        gameData.createRoom();
         return Scaffold(
           backgroundColor: kThemeColor,
           body: Center(

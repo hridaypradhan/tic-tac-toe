@@ -87,7 +87,11 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                               onPressed: () {
                                 Provider.of<GameData>(context, listen: false)
                                     .setPlayerId(2);
-                                Navigator.pushNamed(context, GameScreen.id);
+
+                                if (Provider.of<GameData>(context,
+                                        listen: false)
+                                    .secondPlayerJoin(makeCodeFromDigits()))
+                                  Navigator.pushNamed(context, GameScreen.id);
                               },
                             ),
                             bottom: 20.0,
@@ -172,5 +176,9 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
         ),
       ),
     );
+  }
+
+  int makeCodeFromDigits() {
+    return (1000 * _digit1) + (100 * _digit2) + (10 * _digit3) + (_digit4);
   }
 }

@@ -10,16 +10,37 @@ class GameData extends ChangeNotifier {
   GameData() {
     generateCode();
     _firebaseGameData = FirebaseGameData();
-    _firebaseGameData.createRoom(_gameCode);
+    _firebaseGameData.getRoom(_gameCode).snapshots().listen(
+      (event) {
+        Map<String, dynamic> newBoardState = event.data();
+        _currentSymbols = newBoardState['currentSymbols'];
+        _isCrossTurn = newBoardState['isCrossTurn'];
+        _secondPlayerExists = newBoardState['secondPlayerExists'];
+        notifyListeners();
+        print('second player is now $_secondPlayerExists');
+      },
+    );
   }
 
+  void createRoom() => _firebaseGameData.createRoom(_gameCode);
+
   FirebaseGameData _firebaseGameData;
-  bool _secondPlayerExists = true;
+  bool _secondPlayerExists = false;
   bool _isCrossTurn = true;
   bool _gameSquaresEnabled = true;
   int _gameCode;
   int _playerId;
-  List<int> _currentSymbols = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<dynamic> _currentSymbols = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  bool secondPlayerJoin(int code) {
+    _gameCode = code;
+    try {
+      _firebaseGameData.joinIfGameExists(_gameCode);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   void setPlayerId(int id) {
     _playerId = id;
@@ -41,6 +62,7 @@ class GameData extends ChangeNotifier {
       _isCrossTurn = true;
     }
     _firebaseGameData.updateBoardState(_gameCode, _currentSymbols);
+    _firebaseGameData.changeTurn(_gameCode, isCrossTurn);
     checkIfGameOver();
     notifyListeners();
   }
@@ -58,7 +80,9 @@ class GameData extends ChangeNotifier {
       default:
         return GestureDetector(
           onTap: () {
-            if (_gameSquaresEnabled) turnOfPlay(index);
+            if ((_isCrossTurn && _playerId == 1) ||
+                (!_isCrossTurn && _playerId == 2)) if (_gameSquaresEnabled)
+              turnOfPlay(index);
           },
           child: GridSquare(
             icon: null,
