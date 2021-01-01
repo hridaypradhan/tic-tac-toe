@@ -32,6 +32,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
             ButtonTemplate(
               text: 'Start a new game',
               tapFunction: () {
+                Provider.of<GameData>(context, listen: false).setPlayerId(1);
                 Navigator.pushNamed(context, NewGameScreen.id);
               },
             ),
@@ -45,6 +46,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
             ButtonTemplate(
               text: 'Join an existing game',
               tapFunction: () {
+                Provider.of<GameData>(context, listen: false).setPlayerId(2);
                 showModalBottomSheet(
                   backgroundColor: Colors.transparent,
                   context: context,
@@ -85,9 +87,6 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                Provider.of<GameData>(context, listen: false)
-                                    .setPlayerId(2);
-
                                 if (Provider.of<GameData>(context,
                                         listen: false)
                                     .secondPlayerJoin(makeCodeFromDigits()))

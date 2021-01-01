@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
 
 const CROSS_CODE = 1, CIRCLE_CODE = 2;
 
@@ -21,3 +22,5 @@ final kGameSymbol = Row(
     ),
   ],
 );
+
+final AsyncMemoizer memoizer = AsyncMemoizer();

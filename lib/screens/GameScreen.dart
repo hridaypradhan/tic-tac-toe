@@ -1,3 +1,4 @@
+import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +44,23 @@ class GameScreen extends StatelessWidget {
                       color: kSecondaryColor,
                       fontSize: 45.0,
                       letterSpacing: 4.0,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: height / 8,
+                  child: OpacityAnimatedWidget.tween(
+                    enabled: gameData.winnerTextVisible,
+                    duration: Duration(seconds: 1),
+                    opacityDisabled: 0,
+                    opacityEnabled: 1,
+                    child: Text(
+                      '${gameData.winner} won!',
+                      style: TextStyle(
+                        color: kSecondaryColor,
+                        fontSize: 45.0,
+                        letterSpacing: 4.0,
+                      ),
                     ),
                   ),
                 ),
