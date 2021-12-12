@@ -2,11 +2,11 @@ import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/GameData.dart';
-import 'package:flutter_app/screens/GameScreen.dart';
-import 'package:flutter_app/screens/NewGameScreen.dart';
-import 'package:flutter_app/screens/TitleScreen.dart';
-import 'package:flutter_app/screens/ChoiceScreen.dart';
+import 'package:flutter_app/game_data.dart';
+import 'package:flutter_app/screens/game_screen.dart';
+import 'package:flutter_app/screens/new_game_screen.dart';
+import 'package:flutter_app/screens/title_screen.dart';
+import 'package:flutter_app/screens/choice_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
@@ -27,22 +27,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => GameData()),
+        ChangeNotifierProvider(
+          create: (context) => GameData(),
+        ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case ChoiceScreen.id:
               return PageTransition(
-                  child: ChoiceScreen(), type: PageTransitionType.fade);
+                child: ChoiceScreen(),
+                type: PageTransitionType.fade,
+              );
               break;
             case NewGameScreen.id:
               return PageTransition(
-                  child: NewGameScreen(), type: PageTransitionType.fade);
+                child: NewGameScreen(),
+                type: PageTransitionType.fade,
+              );
               break;
             case GameScreen.id:
               return PageTransition(
-                  child: GameScreen(), type: PageTransitionType.fade);
+                child: GameScreen(),
+                type: PageTransitionType.fade,
+              );
               break;
             default:
               return null;

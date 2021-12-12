@@ -2,7 +2,7 @@ import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants.dart';
 import 'package:provider/provider.dart';
-import '../GameData.dart';
+import '../game_data.dart';
 
 class GameScreen extends StatelessWidget {
   static const id = 'game_screen';

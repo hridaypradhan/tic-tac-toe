@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/FirebaseGameData.dart';
+import 'package:flutter_app/firebase_game_data.dart';
 
-import 'components/GridSquare.dart';
+import 'components/grid_square.dart';
 import 'constants.dart';
 
 class GameData extends ChangeNotifier {
@@ -120,6 +120,7 @@ class GameData extends ChangeNotifier {
     _gameSquaresEnabled = false;
   }
 
+  // TODO Handle the drawn game case
   void checkIfGameOver() {
     bool isOver = false;
 

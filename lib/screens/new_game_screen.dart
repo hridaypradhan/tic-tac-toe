@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/GameData.dart';
+import 'package:flutter_app/game_data.dart';
 import 'package:flutter_app/constants.dart';
 import 'package:provider/provider.dart';
-import 'GameScreen.dart';
+import 'game_screen.dart';
 
 class NewGameScreen extends StatelessWidget {
   static const String id = 'new_game_screen';

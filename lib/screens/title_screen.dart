@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:animated_widgets/animated_widgets.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/ChoiceScreen.dart';
+import 'package:flutter_app/screens/choice_screen.dart';
 import '../constants.dart';
 
 class TitleScreen extends StatefulWidget {

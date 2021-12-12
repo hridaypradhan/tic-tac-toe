@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/components/ButtonTemplate.dart';
+import 'package:flutter_app/components/button_template.dart';
 import 'package:flutter_app/constants.dart';
-import 'package:flutter_app/screens/GameScreen.dart';
-import 'package:flutter_app/screens/NewGameScreen.dart';
+import 'package:flutter_app/screens/game_screen.dart';
+import 'package:flutter_app/screens/new_game_screen.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 
-import '../GameData.dart';
+import '../game_data.dart';
 
 class ChoiceScreen extends StatefulWidget {
   static const String id = 'choice_screen';
